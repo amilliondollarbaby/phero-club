@@ -163,12 +163,12 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 /* ---------- RITUAL pinned ---------- */
 .ritual{height:320vh;padding:0}
 .ritual .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;width:min(1200px,100% - 48px);margin-inline:auto}
-.steps{position:relative}
+.steps{position:relative;height:min(64vh,560px)}
 .step{position:absolute;inset:auto 0;top:50%;transform:translateY(-40%);opacity:0;transition:opacity .6s var(--ease),transform .8s var(--ease)}
 .step.on{opacity:1;transform:translateY(-50%)}
 .step .n{font-family:var(--script);font-size:3rem;color:var(--accent);line-height:1}
 .step h3{font-family:var(--serif);text-transform:uppercase;font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem);line-height:.95;margin:6px 0 14px}
-.bar{position:absolute;left:0;bottom:-120px;width:180px;height:2px;background:var(--line)}
+.bar{position:absolute;left:0;bottom:0;width:180px;height:1px;background:var(--line)}
 .bar i{display:block;height:100%;width:0;background:var(--accent)}
 .visual{position:relative;height:min(70vh,620px)}
 .visual .v{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.92) rotate(-2deg);transition:opacity .7s var(--ease),transform 1s var(--glide)}
@@ -177,7 +177,7 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 .visual .trio{position:relative;width:100%;height:100%}
 .visual .trio img{position:absolute;bottom:12%;width:36%;filter:drop-shadow(0 26px 30px rgba(58,6,18,.3))}
 .visual .trio img:nth-child(1){left:2%;transform:rotate(-8deg)}.visual .trio img:nth-child(2){left:32%;bottom:18%;z-index:2}.visual .trio img:nth-child(3){right:2%;transform:rotate(8deg)}
-@media (max-width:820px){.ritual .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding-top:90px}.visual{height:44vh}.steps{min-height:240px}}
+@media (max-width:820px){.ritual .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding-top:90px}.visual{height:44vh}.steps{height:auto;min-height:260px}.bar{display:none}}
 
 /* ---------- BOXES ---------- */
 .boxes-sec{background:var(--bg2);transition:background .8s}
@@ -357,7 +357,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
     </div>
     <div class="visual">
       <div class="v on"><div class="trio" id="rtrio"></div></div>
-      <div class="v"><img class="photo" src="assets/matchboxes.jpg" alt="Matchboxes"></div>
+      <div class="v"><img class="photo" src="assets/matchboxes-v2.jpg" alt="Matchboxes"></div>
       <div class="v"><img class="photo" data-k="extra" alt=""></div>
     </div>
   </div>
@@ -452,7 +452,7 @@ const CANDLES=[
  {mood:"spicy",name:"Dark Chocolate Cherry",word:"Cherry",notes:"Dark chocolate · black cherry",img:"assets/c-dark-chocolate-cherry.png",bg:"linear-gradient(170deg,#8E0E1F 0%,#3A0612 100%)",ink:"#FFF6F0",acc:"#F7A1B8",bgs:"#3A0612"},
  {mood:"spicy",name:"Cinnamon Kiss",word:"Kiss",notes:"Cinnamon · warm vanilla",img:"assets/c-cinnamon-kiss.png",bg:"linear-gradient(170deg,#C2304A 0%,#8E0E1F 100%)",ink:"#FFF6F0",acc:"#FDE1E8",bgs:"#8E0E1F"}];
 const MOOD={
- sweet:{tag:"Sweet · for singles",trio:[0,1,2],extra:"assets/stickers-sweet.jpg",
+ sweet:{tag:"Sweet · for singles",trio:[0,1,2],extra:"assets/stickers-sweet-v2.jpg",
    camp:"assets/sweet-duo-jump.jpg",campTag:"The Sweet collection · for singles",campTitle:"Sweet for you.",campScript:"fall for yourself",
    campLead:"Strawberry, spun sugar and warm honey toast. Three dessert candles for slow mornings, long baths and the book you keep meaning to finish.",campCta:"The Sweet Night In",
    lookLead:"Pink, playful and a little bit extra. Sweet is for the main character: you.",
@@ -464,8 +464,8 @@ const MOOD={
    set:{img:"assets/set-sweet.jpg",title:"The Sweet Night In",lead:"All three Sweet candles plus everything for the perfect solo night.",
         items:["Strawberry Shortcake","Cotton Candy Cloud","Honey Butter Toast","Cat-and-stripes matchbox","Bookmark","5 zine stickers","Welcome letter","Square pink box"]},
    solo:{img:"assets/solo-sweet.jpg",title:"The Sweet Solo",lead:"One Sweet candle in its own pink cube box, sealed with our logo sticker.",items:["1 Sweet candle of your choice","Pink cube box","Logo sticker seal"]},
-   extras:[["assets/stickers-sweet.jpg","Zine stickers","Sweet Nothings ticket, double hearts and our cat."],["assets/bookmark.jpg","The bookmark","For readers who light a candle first."],
-           ["assets/matchboxes.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-sweet.jpg","The letter","Welcome to the Club, sweetheart."],["assets/solo-sweet.jpg","The Solo box","A cube box, sealed with love."]],
+   extras:[["assets/stickers-sweet-v2.jpg","Zine stickers","Sweet Nothings ticket, double hearts and our cat."],["assets/bookmark.jpg","The bookmark","For readers who light a candle first."],
+           ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-sweet.jpg","The letter","Welcome to the Club, sweetheart."],["assets/solo-sweet.jpg","The Solo box","A cube box, sealed with love."]],
    drawTag:"Comes with love",drawTitle:"Little love notes",drawLead:"A tiny note to yourself, for the night in. Tap the card.",drawFoot:"Phero Club · Sweet",
    prompts:["Read one chapter more than you planned","Text no one back tonight","You're the main character","Light it. Breathe. Stay in.","Make tea, take the long bath","Say one nice thing to the mirror","Bed by midnight, book on your chest","You deserve the whole dessert"]},
  spicy:{tag:"Spicy · for couples",trio:[3,4,5],extra:"assets/deck.jpg",
@@ -478,7 +478,7 @@ const MOOD={
         items:["Midnight Espresso","Dark Chocolate Cherry","Cinnamon Kiss","Cat-and-stripes matchbox","Date Night Deck","5 stickers","Welcome letter","Square black box"]},
    solo:{img:"assets/solo-spicy.jpg",title:"The Spicy Solo",lead:"One Spicy candle in its own black cube box, sealed with our logo sticker.",items:["1 Spicy candle of your choice","Black cube box","Logo sticker seal"]},
    extras:[["assets/deck.jpg","Date Night Deck","Questions and light dares for two."],["assets/stickers-spicy.jpg","Stickers","Cherries, a kiss and our cat."],
-           ["assets/matchboxes.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-spicy.jpg","The letter","Welcome to the Club, you two."],["assets/solo-spicy.jpg","The Solo box","A black cube, sealed with a little heat."]],
+           ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-spicy.jpg","The letter","Welcome to the Club, you two."],["assets/solo-spicy.jpg","The Solo box","A black cube, sealed with a little heat."]],
    drawTag:"Comes with every Spicy set",drawTitle:"Date Night Deck",drawLead:"Questions and light dares for two. Tap the card to draw one.",drawFoot:"Phero Club · Date Night",
    prompts:["Slow dance to one song","Tell me when you first noticed me","Whisper one thing you've never told me","Pick a song. Kiss until it ends","Trade seats. Sit closer","Plan our next date, no phones","Tell me the moment you knew","Recreate our first hello"]}
 };
