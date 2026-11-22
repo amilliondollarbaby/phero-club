@@ -69,8 +69,12 @@ nav .logo{font-size:1.7rem;color:var(--hacc,var(--accent))}nav .logo .c{font-siz
 .cand{position:absolute;inset:0;transition:transform 1s var(--glide),opacity .8s var(--ease)}
 .cand .tilt{width:100%;height:100%;transform-style:preserve-3d;transition:transform .25s ease-out}
 .cand img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 34px 40px rgba(58,6,18,.32));animation:float 6s ease-in-out infinite}
-.cand.out-l{transform:translateX(-90%) rotate(-14deg) scale(.7);opacity:0}
-.cand.out-r{transform:translateX(90%) rotate(14deg) scale(.7);opacity:0}
+.cand.out-l{transform:translateX(-60%) rotate(-10deg) scale(.8);opacity:0}
+.cand.out-r{transform:translateX(60%) rotate(10deg) scale(.8);opacity:0}
+/* leaving candle exits fast; the new one waits a beat so the two never overlap */
+.cand.leaving{transition:transform .55s cubic-bezier(.55,0,.75,.2),opacity .3s ease-in;pointer-events:none}
+.cand.leaving img{animation:none}
+.cand.entering{transition:transform .9s var(--glide) .28s,opacity .6s var(--ease) .28s}
 @keyframes float{50%{transform:translateY(-14px) rotate(-1.2deg)}}
 .shadow{position:absolute;left:50%;top:calc(46% + min(21vh,39vw));width:min(26vh,48vw);height:22px;transform:translateX(-50%);border-radius:50%;
   background:radial-gradient(closest-side,rgba(58,6,18,.28),transparent);animation:shad 6s ease-in-out infinite}
@@ -453,8 +457,14 @@ function show(n,dir=1,anim=true){
   if(anim&&!reduce){const r=$("#reveal");r.style.setProperty("--rvbg",c.bg);r.classList.remove("go");void r.offsetWidth;r.classList.add("go");
     setTimeout(()=>{heroVars(c);r.classList.remove("go")},1000);hero.style.setProperty("--hink",c.ink);hero.style.setProperty("--hacc",c.acc)}
   else heroVars(c);
+  /* clear any candle still mid-exit, so fast clicks never stack candles */
+  stage.querySelectorAll(".cand.leaving").forEach(n=>n.remove());
   const old=stage.querySelector(".cand"),nu=makeCand(c);
-  if(anim&&!reduce&&old){nu.classList.add(dir>0?"out-r":"out-l");stage.appendChild(nu);requestAnimationFrame(()=>requestAnimationFrame(()=>{nu.classList.remove("out-r","out-l");old.classList.add(dir>0?"out-l":"out-r")}));setTimeout(()=>old.remove(),1000)}
+  if(anim&&!reduce&&old){
+    old.classList.add("leaving",dir>0?"out-l":"out-r");
+    nu.classList.add("entering",dir>0?"out-r":"out-l");stage.appendChild(nu);
+    void nu.offsetWidth;nu.classList.remove("out-r","out-l");
+    setTimeout(()=>{old.remove();nu.classList.remove("entering")},1200)}
   else{stage.innerHTML="";stage.appendChild(nu)}
   letters($("#bigword"),c.word,dir,anim);letters($("#cname"),c.name,dir,anim);
   const notes=$("#cnotes");notes.style.opacity=0;setTimeout(()=>{notes.textContent=c.notes;notes.style.opacity=.85},anim?300:0);
@@ -463,10 +473,10 @@ function show(n,dir=1,anim=true){
   $$("#thumbs button").forEach((b,k)=>b.classList.toggle("on",k===n));
   setMood(c.mood);
 }
-function go(step){if(lock)return;lock=true;setTimeout(()=>lock=false,700);show((idx+step+6)%6,Math.sign(step));kick()}
+function go(step){if(lock)return;lock=true;setTimeout(()=>lock=false,1000);show((idx+step+6)%6,Math.sign(step));kick()}
 $("#next").onclick=()=>go(1);$("#prev").onclick=()=>go(-1);
 $("#thumbs").innerHTML=CANDLES.map((c,k)=>`<button aria-label="${c.name}"><img src="${src(c.img)}" alt=""></button>`).join("");
-$$("#thumbs button").forEach((b,k)=>b.onclick=()=>{if(k!==idx){show(k,k>idx?1:-1);kick()}});
+$$("#thumbs button").forEach((b,k)=>b.onclick=()=>{if(k!==idx&&!lock){lock=true;setTimeout(()=>lock=false,1000);show(k,k>idx?1:-1);kick()}});
 addEventListener("keydown",e=>{if(hero.getBoundingClientRect().bottom<innerHeight*.5)return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
 let sx=null;hero.addEventListener("pointerdown",e=>sx=e.clientX);hero.addEventListener("pointerup",e=>{if(sx!==null&&Math.abs(e.clientX-sx)>50)go(e.clientX<sx?1:-1);sx=null});
 /* mouse tilt on the candle */
