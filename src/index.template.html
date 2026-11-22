@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Phero Club — Scents that attract</title>
+<meta name="robots" content="noindex, nofollow">
+<script>
+/* Password screen. Only a SHA-256 hash of the password is stored here, never the password. */
+window.PC_HASH="1f540dac2946f150b21190c1dd19cdef7dec72f13abf9024090350cc39670ee6";
+try{if(localStorage.getItem("pc-pass")===window.PC_HASH)document.documentElement.classList.add("unlocked")}catch(e){}
+</script>
 <meta name="description" content="Phero Club: hand-poured dessert candles from the Philippines. Sweet for you. Spicy for two.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,9 +279,45 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140px);background:var(--accent);color:var(--on);padding:14px 24px;border-radius:0;letter-spacing:.06em;z-index:120;font-weight:700;transition:transform .5s var(--spring)}
 .toast.show{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.ritual{height:auto}.ritual .pin{position:relative}}
+
+/* ---------- PASSWORD GATE ---------- */
+html:not(.unlocked) body{overflow:hidden}
+html:not(.unlocked) body>*:not(#gate){visibility:hidden}
+html.unlocked #gate{display:none}
+#gate{position:fixed;inset:0;z-index:999;display:grid;place-items:center;padding:24px;background:#FFF6F0;color:#3A0612;--logoP:#8E0E1F;--logoC:#3A0612}
+#gate form{display:flex;flex-direction:column;align-items:center;text-align:center;width:min(380px,100%)}
+#gate .logo{font-size:clamp(4rem,16vw,6.5rem)}
+#gate .ltag{color:#3A0612}
+#gate p{margin:44px 0 22px;color:#7a3a48;font-size:1.05rem}
+#gate .field{display:flex;width:100%;border-bottom:1px solid rgba(58,6,18,.35)}
+#gate input{flex:1;min-width:0;border:0;background:transparent;font:500 1.1rem var(--serif);letter-spacing:.12em;padding:12px 4px;color:#3A0612;outline:none;text-align:center}
+#gate input::placeholder{color:rgba(58,6,18,.4);letter-spacing:.28em;font-size:.7rem;text-transform:uppercase}
+#gate button{margin-top:26px}
+#gate .err{min-height:1.4em;margin-top:14px;font-size:.95rem;color:#C2304A}
+#gate.shake form{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 </style>
 </head>
 <body data-mood="sweet">
+
+<div id="gate" role="dialog" aria-modal="true" aria-label="Members only">
+  <form id="gateForm" autocomplete="off">
+    <div class="lockup"><span class="est">EST. 2026</span><span class="logo">Phero<span class="c">Club</span></span><span class="ltag">SCENTS THAT ATTRACT</span></div>
+    <p>Members only, for now. Enter the password to come in.</p>
+    <label class="field"><input id="gatePw" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password"></label>
+    <button class="btn" type="submit">Enter <svg><use href="#arrowR"/></svg></button>
+    <div class="err" id="gateErr" aria-live="polite"></div>
+  </form>
+</div>
+<script>
+(()=>{const f=document.getElementById("gateForm"),pw=document.getElementById("gatePw"),err=document.getElementById("gateErr"),g=document.getElementById("gate");
+  if(!document.documentElement.classList.contains("unlocked"))setTimeout(()=>pw.focus(),50);
+  async function hash(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+  f.addEventListener("submit",async e=>{e.preventDefault();let h="";try{h=await hash(pw.value.trim())}catch(x){}
+    if(h===window.PC_HASH){try{localStorage.setItem("pc-pass",h)}catch(x){}document.documentElement.classList.add("unlocked");scrollTo(0,0)}
+    else{err.textContent="That's not it. Try again?";g.classList.remove("shake");void g.offsetWidth;g.classList.add("shake");pw.select()}});
+})();
+</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="spk" viewBox="0 0 24 24"><path d="M12 1c1 6 5 10 11 11-6 1-10 5-11 11-1-6-5-10-11-11C7 11 11 7 12 1z"/></symbol>
