@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Phero Club — Scents that attract</title>
+<title>Phero Club — Brand Book</title>
 <meta name="robots" content="noindex, nofollow">
 <script>
 /* Password screen. Only a SHA-256 hash of the password is stored here, never the password. */
@@ -215,15 +215,21 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 
 /* ---------- EXTRAS carousel ---------- */
 .extras-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
-.drag-hint{color:var(--soft)}
-.rail{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:46px max(24px,calc((100vw - 1240px)/2)) 40px;scroll-padding-inline:max(24px,calc((100vw - 1240px)/2));cursor:grab;scrollbar-width:none}
-.rail::-webkit-scrollbar{display:none}
-.rail.drag{cursor:grabbing;scroll-snap-type:none}
-.ex{flex:0 0 min(340px,78vw);scroll-snap-align:start;transition:transform .5s var(--ease)}
-.ex .ph{border-radius:2px;overflow:hidden;aspect-ratio:4/5;background:var(--bg2);transform:perspective(900px) rotateX(var(--rx,0)) rotateY(var(--ry,0));transition:transform .2s ease-out}
-.ex img{width:100%;height:100%;object-fit:cover;pointer-events:none}
-.ex h4{font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.45rem;margin-top:14px}
-.ex p{color:var(--soft);font-size:1.02rem}
+.extras-head .lead{max-width:400px}
+.inbox{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,32px);margin-top:60px}
+.ib{background:var(--bg2);display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(26px,3vw,40px) 22px 30px;cursor:zoom-in;transition:background .8s}
+.ib .art{height:clamp(180px,20vw,270px);width:100%;position:relative}
+.ib .art>img{position:absolute;inset:0;margin:auto;width:86%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 20px rgba(58,6,18,.2));transition:transform .7s var(--spring)}
+.ib:hover .art>img{transform:translateY(-6px) rotate(-2deg) scale(1.03)}
+.ib .trio{position:relative;width:100%;height:100%}
+.ib .trio img{position:absolute;bottom:4%;width:40%;filter:drop-shadow(0 14px 16px rgba(58,6,18,.22));transition:transform .7s var(--spring)}
+.ib .trio img:nth-child(1){left:6%;transform:rotate(-7deg)}.ib .trio img:nth-child(2){left:30%;bottom:10%;z-index:2}.ib .trio img:nth-child(3){right:6%;transform:rotate(7deg)}
+.ib:hover .trio img:nth-child(1){transform:rotate(-11deg) translateX(-6%)}.ib:hover .trio img:nth-child(2){transform:translateY(-6%)}.ib:hover .trio img:nth-child(3){transform:rotate(11deg) translateX(6%)}
+.ib .n{margin-top:26px;color:var(--accent);font-size:.6rem}
+.ib h4{font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.35rem;line-height:1.2;margin-top:6px}
+.ib p{color:var(--soft);font-size:.98rem;line-height:1.45;margin-top:4px;max-width:260px}
+@media (max-width:900px){.inbox{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.inbox{gap:12px}.ib{padding:22px 12px 22px}.ib h4{font-size:1.1rem}.ib p{font-size:.9rem}}
 
 /* ---------- CARD DRAW ---------- */
 .draw-sec{background:var(--bg2);transition:background .8s}
@@ -241,6 +247,48 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 body[data-mood="sweet"]{--cardback:repeating-linear-gradient(90deg,#F7A1B8 0 22px,#FFF6F0 22px 44px);--cardface:#F7A1B8;--cardink:#8E0E1F}
 body[data-mood="spicy"]{--cardback:repeating-linear-gradient(90deg,#8E0E1F 0 22px,#3A0612 22px 44px);--cardface:#8E0E1F;--cardink:#FFF6F0}
 @media (max-width:900px){.draw{grid-template-columns:1fr}}
+
+/* ---------- BRAND GUIDE (always in the light brand-book palette) ---------- */
+.brand{--bg:#FFF6F0;--bg2:#FDE1E8;--ink:#3A0612;--soft:#7a3a48;--accent:#8E0E1F;--line:rgba(58,6,18,.14);--on:#FFF6F0;--logoP:#8E0E1F;--logoC:#3A0612;
+  background:var(--bg);color:var(--ink);border-top:1px solid var(--line)}
+.bg-row{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,5vw,80px);padding:64px 0;border-top:1px solid var(--line)}
+.bg-row:first-of-type{margin-top:56px}
+.bg-label .caps{color:var(--accent)}
+.bg-label p{color:var(--soft);font-size:1rem;line-height:1.55;margin-top:12px}
+.logo-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lp{aspect-ratio:16/10;display:grid;place-items:center;position:relative;padding:20px}
+.lp .logo{font-size:clamp(3rem,6.4vw,5.2rem)}
+.lp .ltag{margin-top:clamp(30px,3.6vw,48px)}
+.lp figcaption{position:absolute;left:16px;top:14px;color:#FFF6F0;font-size:.56rem}
+.rules{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+.rules li{border-top:1px solid var(--ink);padding-top:14px}
+.rules b{display:block;font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.15rem;margin-bottom:6px}
+.rules span{color:var(--soft);font-size:.98rem;line-height:1.5}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sw{text-align:left;cursor:copy}
+.sw i{display:block;aspect-ratio:1/1;box-shadow:inset 0 0 0 1px rgba(58,6,18,.1);transition:transform .4s var(--spring)}
+.sw:hover i{transform:translateY(-4px)}
+.sw b{display:block;font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.05rem;margin-top:12px}
+.sw code{display:block;font:600 .7rem/1.6 var(--serif);letter-spacing:.2em;color:var(--accent)}
+.sw span{display:block;color:var(--soft);font-size:.92rem;line-height:1.4;margin-top:2px}
+.type{display:grid;gap:0}
+.ty{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.ty:first-child{padding-top:0}
+.spec{font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.05;color:var(--accent)}
+.meta b{display:block;font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.2rem}
+.meta span{display:block;text-transform:uppercase;letter-spacing:.24em;font-weight:600;font-size:.62rem;color:var(--accent);margin:4px 0 8px}
+.meta p{color:var(--soft);font-size:.98rem;line-height:1.5}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.dd-h{display:block;color:var(--accent);padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:8px}
+.dd ul{list-style:none}.dd li{padding:10px 0;border-bottom:1px solid var(--line);font-size:1.02rem;line-height:1.45}
+.lineup{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:0 40px}
+.lu{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.lu img{width:64px;height:72px;object-fit:contain}
+.lu b{display:block;font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.1rem}
+.lu span{color:var(--soft);font-size:.95rem}
+.lu em{font-style:normal;text-transform:uppercase;letter-spacing:.24em;font-weight:600;font-size:.58rem;color:var(--accent)}
+@media (max-width:900px){.bg-row{grid-template-columns:1fr;padding:48px 0}.rules{grid-template-columns:1fr}.swatches{grid-template-columns:1fr 1fr}
+  .logo-pair{grid-template-columns:1fr}.ty{grid-template-columns:1fr;gap:12px}.dd{grid-template-columns:1fr;gap:28px}.lineup{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
 
 /* ---------- LOOKBOOK ---------- */
 .look-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
@@ -300,10 +348,10 @@ html.unlocked #gate{display:none}
 </head>
 <body data-mood="sweet">
 
-<div id="gate" role="dialog" aria-modal="true" aria-label="Members only">
+<div id="gate" role="dialog" aria-modal="true" aria-label="Team only">
   <form id="gateForm" autocomplete="off">
     <div class="lockup"><span class="est">EST. 2026</span><span class="logo">Phero<span class="c">Club</span></span><span class="ltag">SCENTS THAT ATTRACT</span></div>
-    <p>Members only, for now. Enter the password to come in.</p>
+    <p>Internal brand book, team only. Enter the password to come in.</p>
     <label class="field"><input id="gatePw" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password"></label>
     <button class="btn" type="submit">Enter <svg><use href="#arrowR"/></svg></button>
     <div class="err" id="gateErr" aria-live="polite"></div>
@@ -326,7 +374,7 @@ html.unlocked #gate{display:none}
 </svg>
 
 <nav id="nav">
-  <div class="links caps"><a href="#story">About</a><a href="#ritual">Ritual</a><a href="#boxes">Boxes</a><a href="#people">Lookbook</a></div>
+  <div class="links caps"><a href="#story">About</a><a href="#boxes">Boxes</a><a href="#inbox-sec">In the box</a><a href="#people">Lookbook</a><a href="#brand">Brand guide</a></div>
   <a class="logo" href="#top">Phero<span class="c">Club</span></a>
   <div class="toggle" role="group" aria-label="Choose your mood"><button data-mood="sweet" aria-pressed="true">Sweet</button><button data-mood="spicy" aria-pressed="false">Spicy</button></div>
 </nav>
@@ -355,7 +403,7 @@ html.unlocked #gate{display:none}
       <span class="eyebrow" data-t="campTag"></span>
       <h2 class="camp-h"><span data-t="campTitle"></span><span class="sc" data-t="campScript"></span></h2>
       <p class="lead" data-t="campLead"></p>
-      <a class="btn" href="#boxes"><span data-t="campCta"></span> <svg><use href="#arrowR"/></svg></a>
+      <a class="btn" href="#inbox-sec"><span data-t="campCta"></span> <svg><use href="#arrowR"/></svg></a>
     </div>
   </div>
 </section>
@@ -429,7 +477,7 @@ html.unlocked #gate{display:none}
 <section class="boxes-sec" id="boxes">
   <div class="wrap">
     <span class="eyebrow"><b>03</b>The boxes</span>
-    <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>Pick your</span></span><span class="ln"><span><span class="sc">box</span></span></span></h2>
+    <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>The two</span></span><span class="ln"><span><span class="sc">boxes</span></span></span></h2>
     <div class="box-ui">
       <div class="box-photo rv" id="boxPhoto"><img id="boxA" alt="Box"><img id="boxB" class="hide" alt=""></div>
       <div class="rv">
@@ -437,20 +485,22 @@ html.unlocked #gate{display:none}
         <h3 id="boxTitle"></h3>
         <p class="lead" id="boxLead" style="margin-top:10px"></p>
         <div class="chips" id="chips"></div>
-        <a class="btn" href="#club">Join the club <svg><use href="#arrowR"/></svg></a>
+        <a class="textlink" href="#inbox-sec">See every piece <svg><use href="#arrowR"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- EXTRAS -->
-<section id="extras" style="padding-bottom:40px">
-  <div class="wrap extras-head">
-    <div><span class="eyebrow"><b>04</b>In every set</span>
-    <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>Little</span></span><span class="ln"><span><span class="sc">extras</span></span></span></h2></div>
-    <span class="caps drag-hint">← Drag to explore →</span>
+<section id="inbox-sec">
+  <div class="wrap">
+    <div class="extras-head">
+      <div><span class="eyebrow"><b>04</b>The 3-in-1 set</span>
+      <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>What's in</span></span><span class="ln"><span>the <span class="sc">box</span></span></span></h2></div>
+      <p class="lead rv" data-t="inboxLead"></p>
+    </div>
+    <div class="inbox" id="inbox"></div>
   </div>
-  <div class="rail" id="rail"></div>
 </section>
 
 <!-- DRAW -->
@@ -480,6 +530,83 @@ html.unlocked #gate{display:none}
   </div>
 </section>
 
+<!-- BRAND GUIDE -->
+<section class="brand" id="brand">
+  <div class="wrap">
+    <div class="extras-head">
+      <div><span class="eyebrow"><b>07</b>Brand guide</span>
+      <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>The house</span></span><span class="ln"><span><span class="sc">rules</span></span></span></h2></div>
+      <p class="lead rv">Everything the team needs to keep Phero Club looking like Phero Club. Tap any color to copy its hex code.</p>
+    </div>
+
+    <!-- Logo -->
+    <div class="bg-row">
+      <div class="bg-label"><span class="caps">The logo</span><p>One logo, two colorways. Always use the master file. Never redraw, re-space or recolor it.</p></div>
+      <div class="bg-body">
+        <div class="logo-pair">
+          <figure class="lp" style="background:#8E0E1F;--logoP:#F25C60;--logoC:#FFF6F0">
+            <div class="lockup"><span class="est">EST. 2026</span><span class="logo">Phero<span class="c">Club</span></span><span class="ltag">SCENTS THAT ATTRACT</span></div>
+            <figcaption class="caps">Spicy · on Phero Red</figcaption>
+          </figure>
+          <figure class="lp" style="background:#F7A1B8;--logoP:#8E0E1F;--logoC:#3A0612">
+            <div class="lockup"><span class="est">EST. 2026</span><span class="logo">Phero<span class="c">Club</span></span><span class="ltag">SCENTS THAT ATTRACT</span></div>
+            <figcaption class="caps" style="color:#3A0612">Sweet · on Sweet Pink</figcaption>
+          </figure>
+        </div>
+        <ul class="rules">
+          <li><b>Full logo</b><span>EST. 2026 + wordmark + SCENTS THAT ATTRACT. Packaging only: box front, inside the lid, matchbox, bookmark, stickers.</span></li>
+          <li><b>Wordmark only</b><span>Jar labels carry just “Phero Club” plus the flavor name. Flat label, no border: Phero Red for Spicy, Kiss Coral for Sweet.</span></li>
+          <li><b>“Club”</b><span>Pinyon Script, upright, overlapping the bottom right of “Phero” in the second color. Say it “FAIR-oh”.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="bg-row">
+      <div class="bg-label"><span class="caps">Colors</span><p>Max two main colors per design. Sweet lives in pinks and cream; Spicy lives in reds and wine.</p></div>
+      <div class="bg-body"><div class="swatches" id="swatches"></div></div>
+    </div>
+
+    <!-- Type -->
+    <div class="bg-row">
+      <div class="bg-label"><span class="caps">Typography</span><p>All three are free on Google Fonts and fine for commercial use.</p></div>
+      <div class="bg-body type">
+        <div class="ty"><div class="spec" style="font-family:var(--brand);font-style:italic;font-weight:900;letter-spacing:-.02em">Strawberry Shortcake</div>
+          <div class="meta"><b>Playfair Display</b><span>Black Italic 900</span><p>Headlines, product names and “Phero”. Keep the letters tight.</p></div></div>
+        <div class="ty"><div class="spec" style="font-family:var(--script);font-size:clamp(2.6rem,5vw,4rem)">with love</div>
+          <div class="meta"><b>Pinyon Script</b><span>Regular</span><p>“Club” and short flirty accents only: “for singles”, “with love”. Never long text.</p></div></div>
+        <div class="ty"><div class="spec" style="font-family:var(--serif);font-weight:500"><span style="display:block;text-transform:uppercase;letter-spacing:.32em;font-size:.42em;font-weight:600">Scents that attract</span><span style="font-size:.5em;line-height:1.4;display:block;margin-top:10px">Hand-poured dessert candles, made by two friends in the Philippines.</span></div>
+          <div class="meta"><b>Cormorant Garamond</b><span>Medium 500 · SemiBold 600</span><p>Body copy in sentence case. Taglines and labels in wide-spaced caps.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Do / Don't -->
+    <div class="bg-row">
+      <div class="bg-label"><span class="caps">Do &amp; don't</span><p>Elevated, editorial, premium but playful. Warm and a little flirty, never cheap.</p></div>
+      <div class="bg-body dd">
+        <div><span class="caps dd-h">Do</span><ul>
+          <li>Shoot Sweet on Cream, Spicy on Charcoal or After Dark wine.</li>
+          <li>Hard light, real textures, one story prop per shot.</li>
+          <li>Use script in small doses, two main colors at most.</li>
+          <li>Call candles “potions”, customers “members”, launches “drops”.</li>
+          <li>Keep toppers wax only near the wick.</li></ul></div>
+        <div><span class="caps dd-h">Don't</span><ul>
+          <li>Look like a cheap wine brand, a cheap cake brand, or “too AI”.</li>
+          <li>Get explicit. Spicy is suggestive, never explicit (ad rules).</li>
+          <li>Use real brand logos or lookalikes in any shot.</li>
+          <li>Say the candles contain pheromones. The name is inspiration only.</li>
+          <li>Put real fruit, spice or glitter on a lit candle.</li></ul></div>
+      </div>
+    </div>
+
+    <!-- Line-up -->
+    <div class="bg-row">
+      <div class="bg-label"><span class="caps">The line-up</span><p>Six candles, two moods. Sweet is for singles, Spicy is for couples.</p></div>
+      <div class="bg-body lineup" id="lineup"></div>
+    </div>
+  </div>
+</section>
+
 <!-- CLUB -->
 <section class="club" id="club">
   <div class="wrap">
@@ -488,16 +615,16 @@ html.unlocked #gate{display:none}
     </div>
     <p class="lead">Every box makes you a member. Members get first dibs on new scents, surprise drops and little extras along the way.</p>
     <div class="perks caps"><span>First dibs</span><span>Members-only drops</span><span>Little surprises</span></div>
-    <a class="btn" href="#boxes" style="margin-top:44px">Find your box <svg><use href="#arrowR"/></svg></a>
+    <a class="btn" href="#brand" style="margin-top:44px">Open the brand guide <svg><use href="#arrowR"/></svg></a>
   </div>
 </section>
 <footer>
   <div class="wrap foot">
     <a class="logo" href="#top">Phero<span class="c">Club</span></a>
-    <div class="caps foot-links"><a href="#story">About</a><a href="#ritual">Ritual</a><a href="#boxes">Boxes</a><a href="#people">Lookbook</a><span>@pheroclub</span></div>
+    <div class="caps foot-links"><a href="#story">About</a><a href="#ritual">Ritual</a><a href="#boxes">Boxes</a><a href="#inbox-sec">In the box</a><a href="#people">Lookbook</a><a href="#brand">Brand guide</a></div>
     <div class="caps foot-meta">Scents that attract · Est. 2026</div>
   </div>
-  <p class="wrap fine">Hand-poured in small batches in the Philippines. Product and lifestyle images are concept renders.</p>
+  <p class="wrap fine">Internal brand book for the Phero Club team. Please don't share outside the team. Product and lifestyle images are concept renders, not final artwork.</p>
 </footer>
 
 <div class="lb" id="lb"><img alt=""></div>
@@ -520,7 +647,7 @@ const CANDLES=[
 const MOOD={
  sweet:{tag:"Sweet · for singles",trio:[0,1,2],extra:"assets/stickers-sweet-v2.jpg",
    camp:"assets/sweet-duo-jump.jpg",campTag:"The Sweet collection · for singles",campTitle:"Sweet for you.",campScript:"fall for yourself",
-   campLead:"Strawberry, spun sugar and warm honey toast. Three dessert candles for slow mornings, long baths and the book you keep meaning to finish.",campCta:"The Sweet Night In",
+   campLead:"Strawberry, spun sugar and warm honey toast. Three dessert candles for slow mornings, long baths and the book you keep meaning to finish.",campCta:"See what's in the box",
    quote:"Light it, pour the tea, and fall for yourself.",quoteBy:"The Sweet Night In",
    lookLead:"Pink, playful and a little bit extra. Sweet is for the main character: you.",
    look:[["assets/sweet-duo-shortcake.jpg","Best friends, one candle","Strawberry Shortcake"],["assets/sweet-solo-jump.jpg","Light it, then dance","Honey Butter Toast · Cotton Candy Cloud"],
@@ -531,13 +658,17 @@ const MOOD={
    set:{img:"assets/set-sweet.jpg",title:"The Sweet Night In",lead:"All three Sweet candles plus everything for the perfect solo night.",
         items:["Strawberry Shortcake","Cotton Candy Cloud","Honey Butter Toast","Cat-and-stripes matchbox","Bookmark","5 zine stickers","Welcome letter","Square pink box"]},
    solo:{img:"assets/solo-sweet.jpg",title:"The Sweet Solo",lead:"One Sweet candle in its own pink cube box, sealed with our logo sticker.",items:["1 Sweet candle of your choice","Pink cube box","Logo sticker seal"]},
+   inboxLead:"Everything that goes into The Sweet Night In, shown on its own so the team can see each piece clearly.",
+   inbox:[[[0,1,2],"3 Sweet candles","Strawberry Shortcake · Cotton Candy Cloud · Honey Butter Toast"],["assets/in-matchbox-sweet.png","The matchbox","Pocket-size, about 5 × 3.5 cm. Cat and stripes, full logo."],
+          ["assets/in-bookmark.png","The bookmark","Printable, cat and stripes, full logo."],["assets/in-stickers-sweet.png","5 zine stickers","Sweet Nothings ticket, double hearts, cat, logo, “just one more chapter”."],
+          ["assets/in-letter-sweet.png","Welcome letter","A6 card: “Welcome to the Club, sweetheart.”"],["assets/in-boxes.png","Square mailer box","Pink for Sweet, black for Spicy, logo sticker on the lid."]],
    extras:[["assets/stickers-sweet-v2.jpg","Zine stickers","Sweet Nothings ticket, double hearts and our cat."],["assets/bookmark.jpg","The bookmark","For readers who light a candle first."],
            ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-sweet.jpg","The letter","Welcome to the Club, sweetheart."],["assets/solo-sweet.jpg","The Solo box","A cube box, sealed with love."]],
    drawTag:"Comes with love",drawTitle:"Little love notes",drawLead:"A tiny note to yourself, for the night in. Tap the card.",drawFoot:"Phero Club · Sweet",
    prompts:["Read one chapter more than you planned","Text no one back tonight","You're the main character","Light it. Breathe. Stay in.","Make tea, take the long bath","Say one nice thing to the mirror","Bed by midnight, book on your chest","You deserve the whole dessert"]},
  spicy:{tag:"Spicy · for couples",trio:[3,4,5],extra:"assets/deck.jpg",
    camp:"assets/spicy-couple-hero.jpg",campTag:"The Spicy collection · for couples",campTitle:"Spicy for two.",campScript:"lights low",
-   campLead:"Dark roast, black cherry and a cinnamon kiss. A late-night dessert menu with a Date Night Deck to see where the evening goes.",campCta:"The Spicy Night For Two",
+   campLead:"Dark roast, black cherry and a cinnamon kiss. A late-night dessert menu with a Date Night Deck to see where the evening goes.",campCta:"See what's in the box",
    quote:"Lights low, phones away. Let the room do the talking.",quoteBy:"The Spicy Night For Two",
    lookLead:"Phones away, one candle lit. Spicy is for the two of you.",
    look:[["assets/spicy-lights-low.jpg","Lights low","Dark Chocolate Cherry"],["assets/spicy-her.jpg","Her pick","Dark Chocolate Cherry"],
@@ -548,6 +679,10 @@ const MOOD={
    set:{img:"assets/set-spicy.jpg",title:"The Spicy Night For Two",lead:"All three Spicy candles plus everything for date night.",
         items:["Midnight Espresso","Dark Chocolate Cherry","Cinnamon Kiss","Cat-and-stripes matchbox","Date Night Deck","5 stickers","Welcome letter","Square black box"]},
    solo:{img:"assets/solo-spicy.jpg",title:"The Spicy Solo",lead:"One Spicy candle in its own black cube box, sealed with our logo sticker.",items:["1 Spicy candle of your choice","Black cube box","Logo sticker seal"]},
+   inboxLead:"Everything that goes into The Spicy Night For Two, shown on its own so the team can see each piece clearly.",
+   inbox:[[[3,4,5],"3 Spicy candles","Midnight Espresso · Dark Chocolate Cherry · Cinnamon Kiss"],["assets/in-matchbox-spicy.png","The matchbox","Pocket-size, about 5 × 3.5 cm. Cat and stripes, full logo."],
+          ["assets/in-deck.png","Date Night Deck","Questions and light dares for two. Suggestive, never explicit."],["assets/in-stickers-spicy.png","5 stickers","Cat, cherries, a kiss, logo, “after dark”."],
+          ["assets/in-letter-spicy.png","Welcome letter","A6 card: “Welcome to the Club, you two.”"],["assets/in-boxes.png","Square mailer box","Black for Spicy, pink for Sweet, logo sticker on the lid."]],
    extras:[["assets/deck.jpg","Date Night Deck","Questions and light dares for two."],["assets/stickers-spicy.jpg","Stickers","Cherries, a kiss and our cat."],
            ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-spicy.jpg","The letter","Welcome to the Club, you two."],["assets/solo-spicy.jpg","The Solo box","A black cube, sealed with a little heat."]],
    drawTag:"Comes with every Spicy set",drawTitle:"Date Night Deck",drawLead:"Questions and light dares for two. Tap the card to draw one.",drawFoot:"Phero Club · Date Night",
@@ -618,8 +753,11 @@ function renderMood(){
     <figcaption><span class="caps">No. ${String(k+1).padStart(2,"0")}</span><b>${t}</b><span>${c}</span></figcaption></figure>`).join("");
   $$("#look [data-zoom]").forEach(el=>el.onclick=()=>openLB(src(el.dataset.zoom)));if(typeof watch==="function")watch();
   $("#rtrio").innerHTML=d.trio.map(i=>`<img src="${src(CANDLES[i].img)}" alt="">`).join("");
-  $("#rail").innerHTML=d.extras.map(([img,t,p])=>`<div class="ex"><div class="ph" data-zoom="${img}"><img src="${src(img)}" alt="${t}"></div><h4>${t}</h4><p>${p}</p></div>`).join("");
-  bindRail();renderBox(false);
+  $("#inbox").innerHTML=d.inbox.map(([art,t,c],k)=>`<figure class="ib rv" data-zoom="${Array.isArray(art)?"":art}">
+      <div class="art">${Array.isArray(art)?`<div class="trio">${art.map(i=>`<img src="${src(CANDLES[i].img)}" alt="">`).join("")}</div>`:`<img src="${src(art)}" alt="${t}" loading="lazy">`}</div>
+      <span class="caps n">No. ${String(k+1).padStart(2,"0")}</span><h4>${t}</h4><p>${c}</p></figure>`).join("");
+  $$("#inbox .ib").forEach(el=>{if(el.dataset.zoom)el.onclick=()=>openLB(src(el.dataset.zoom));else el.style.cursor="default"});
+  renderBox(false);
   $("#card").classList.remove("flip");
   $("#mq").innerHTML=(mood==="sweet"
     ?`<span>Sweet for you</span><em>&amp;</em><span>Shortcake</span><em>·</em><span>Cotton Candy</span><em>·</em><span>Honey Butter</span><em>·</em><span>Just one more chapter</span><em>·</em>`
@@ -641,17 +779,14 @@ function renderBox(anim=true){
 $$(".seg button").forEach(b=>b.onclick=()=>{boxKind=b.dataset.box;$$(".seg button").forEach(x=>x.setAttribute("aria-selected",x===b));renderBox()});
 $("#boxPhoto").onclick=()=>openLB($("#boxA").src);
 
-/* ---------- extras rail: drag + tilt ---------- */
-function bindRail(){
-  $$(".ex .ph").forEach(p=>{p.onpointermove=e=>{if(e.pointerType!=="mouse")return;const r=p.getBoundingClientRect();p.style.setProperty("--ry",((e.clientX-r.left)/r.width-.5)*14+"deg");p.style.setProperty("--rx",-((e.clientY-r.top)/r.height-.5)*10+"deg")};
-    p.onpointerleave=()=>{p.style.setProperty("--ry","0deg");p.style.setProperty("--rx","0deg")}});
-}
-(()=>{const r=$("#rail");let down=false,x0=0,s0=0,moved=0;
-  r.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down=true;moved=0;x0=e.clientX;s0=r.scrollLeft;r.classList.add("drag")});
-  addEventListener("pointermove",e=>{if(!down)return;moved=Math.abs(e.clientX-x0);r.scrollLeft=s0-(e.clientX-x0)});
-  addEventListener("pointerup",e=>{if(!down)return;down=false;r.classList.remove("drag");if(moved<6){const z=e.target.closest&&e.target.closest("[data-zoom]");if(z)openLB(src(z.dataset.zoom))}});
-  r.addEventListener("click",e=>{if(matchMedia("(pointer:coarse)").matches){const z=e.target.closest("[data-zoom]");if(z)openLB(src(z.dataset.zoom))}});
-})();
+/* ---------- brand guide ---------- */
+const SWATCHES=[["Sweet Pink","#F7A1B8","Sweet line. Strawberry-milk pink, soft not baby-ish."],["Phero Red","#8E0E1F","Spicy line. Cherry-wine red, sexy not loud."],
+ ["Kiss Coral","#F25C60","“Phero” on red. Sweet jar labels."],["After Dark","#3A0612","Deep wine text and backgrounds."],
+ ["Strawberry Milk","#FDE1E8","Light pink support. Sweet gift box."],["Cream","#FFF6F0","Sweet photo backdrop."],
+ ["Raspberry","#C2304A","Accent, in small amounts."],["Charcoal","#2E2A2D","Spicy photo backdrop."]];
+$("#swatches").innerHTML=SWATCHES.map(([n,h,u])=>`<button class="sw" data-h="${h}" data-n="${n}" aria-label="Copy ${n} ${h}"><i style="background:${h}"></i><b>${n}</b><code>${h}</code><span>${u}</span></button>`).join("");
+$$("#swatches .sw").forEach(b=>b.onclick=()=>{try{navigator.clipboard.writeText(b.dataset.h)}catch(e){}toast(`${b.dataset.n} ${b.dataset.h} copied`)});
+$("#lineup").innerHTML=CANDLES.map(c=>`<div class="lu"><img src="${src(c.img)}" alt="" loading="lazy"><div><em>${c.mood==="sweet"?"Sweet":"Spicy"}</em><b>${c.name}</b><span>${c.notes}</span></div></div>`).join("");
 
 /* ---------- card draw ---------- */
 let last=-1;
