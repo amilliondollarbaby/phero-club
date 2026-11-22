@@ -216,7 +216,8 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 /* ---------- EXTRAS carousel ---------- */
 .extras-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
 .extras-head .lead{max-width:400px}
-.inbox{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,32px);margin-top:60px}
+.inbox{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(16px,2.4vw,32px);margin-top:60px}
+.inbox .ib{grid-column:span 2}.inbox .ib:nth-child(4):nth-last-child(2){grid-column:2/4}.inbox .ib:nth-child(5):last-child{grid-column:4/6}
 .ib{background:var(--bg2);display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(26px,3vw,40px) 22px 30px;cursor:zoom-in;transition:background .8s}
 .ib .art{height:clamp(180px,20vw,270px);width:100%;position:relative}
 .ib .art>img{position:absolute;inset:0;margin:auto;width:86%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 20px rgba(58,6,18,.2));transition:transform .7s var(--spring)}
@@ -228,7 +229,8 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 .ib .n{margin-top:26px;color:var(--accent);font-size:.6rem}
 .ib h4{font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.35rem;line-height:1.2;margin-top:6px}
 .ib p{color:var(--soft);font-size:.98rem;line-height:1.45;margin-top:4px;max-width:260px}
-@media (max-width:900px){.inbox{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.inbox{grid-template-columns:1fr 1fr}.inbox .ib,.inbox .ib:nth-child(4):nth-last-child(2),.inbox .ib:nth-child(5):last-child{grid-column:auto}
+  .inbox .ib:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - clamp(8px,1.2vw,16px))}}
 @media (max-width:520px){.inbox{gap:12px}.ib{padding:22px 12px 22px}.ib h4{font-size:1.1rem}.ib p{font-size:.9rem}}
 
 /* ---------- CARD DRAW ---------- */
@@ -658,12 +660,10 @@ const MOOD={
    set:{img:"assets/set-sweet.jpg",title:"The Sweet Night In",lead:"All three Sweet candles plus everything for the perfect solo night.",
         items:["Strawberry Shortcake","Cotton Candy Cloud","Honey Butter Toast","Cat-and-stripes matchbox","Bookmark","5 zine stickers","Welcome letter","Square pink box"]},
    solo:{img:"assets/solo-sweet.jpg",title:"The Sweet Solo",lead:"One Sweet candle in its own pink cube box, sealed with our logo sticker.",items:["1 Sweet candle of your choice","Pink cube box","Logo sticker seal"]},
-   inboxLead:"Everything that goes into The Sweet Night In, shown on its own so the team can see each piece clearly.",
+   inboxLead:"Everything that goes into The Sweet Night In, shown on its own so the team can see each piece clearly. The Solo cube box is sold separately, not part of the set.",
    inbox:[[[0,1,2],"3 Sweet candles","Strawberry Shortcake · Cotton Candy Cloud · Honey Butter Toast"],["assets/in-matchbox-sweet.png","The matchbox","Pocket-size, about 5 × 3.5 cm. Cat and stripes, full logo."],
           ["assets/in-bookmark.png","The bookmark","Printable, cat and stripes, full logo."],["assets/in-stickers-sweet.png","5 zine stickers","Sweet Nothings ticket, double hearts, cat, logo, “just one more chapter”."],
-          ["assets/in-letter-sweet.png","Welcome letter","A6 card: “Welcome to the Club, sweetheart.”"],["assets/in-boxes.png","Square mailer box","Pink for Sweet, black for Spicy, logo sticker on the lid."]],
-   extras:[["assets/stickers-sweet-v2.jpg","Zine stickers","Sweet Nothings ticket, double hearts and our cat."],["assets/bookmark.jpg","The bookmark","For readers who light a candle first."],
-           ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-sweet.jpg","The letter","Welcome to the Club, sweetheart."],["assets/solo-sweet.jpg","The Solo box","A cube box, sealed with love."]],
+          ["assets/in-letter-sweet.png","Welcome letter","A6 card: “Welcome to the Club, sweetheart.”"]],
    drawTag:"Comes with love",drawTitle:"Little love notes",drawLead:"A tiny note to yourself, for the night in. Tap the card.",drawFoot:"Phero Club · Sweet",
    prompts:["Read one chapter more than you planned","Text no one back tonight","You're the main character","Light it. Breathe. Stay in.","Make tea, take the long bath","Say one nice thing to the mirror","Bed by midnight, book on your chest","You deserve the whole dessert"]},
  spicy:{tag:"Spicy · for couples",trio:[3,4,5],extra:"assets/deck.jpg",
@@ -679,12 +679,10 @@ const MOOD={
    set:{img:"assets/set-spicy.jpg",title:"The Spicy Night For Two",lead:"All three Spicy candles plus everything for date night.",
         items:["Midnight Espresso","Dark Chocolate Cherry","Cinnamon Kiss","Cat-and-stripes matchbox","Date Night Deck","5 stickers","Welcome letter","Square black box"]},
    solo:{img:"assets/solo-spicy.jpg",title:"The Spicy Solo",lead:"One Spicy candle in its own black cube box, sealed with our logo sticker.",items:["1 Spicy candle of your choice","Black cube box","Logo sticker seal"]},
-   inboxLead:"Everything that goes into The Spicy Night For Two, shown on its own so the team can see each piece clearly.",
+   inboxLead:"Everything that goes into The Spicy Night For Two, shown on its own so the team can see each piece clearly. The Solo cube box is sold separately, not part of the set.",
    inbox:[[[3,4,5],"3 Spicy candles","Midnight Espresso · Dark Chocolate Cherry · Cinnamon Kiss"],["assets/in-matchbox-spicy.png","The matchbox","Pocket-size, about 5 × 3.5 cm. Cat and stripes, full logo."],
           ["assets/in-deck.png","Date Night Deck","Questions and light dares for two. Suggestive, never explicit."],["assets/in-stickers-spicy.png","5 stickers","Cat, cherries, a kiss, logo, “after dark”."],
-          ["assets/in-letter-spicy.png","Welcome letter","A6 card: “Welcome to the Club, you two.”"],["assets/in-boxes.png","Square mailer box","Black for Spicy, pink for Sweet, logo sticker on the lid."]],
-   extras:[["assets/deck.jpg","Date Night Deck","Questions and light dares for two."],["assets/stickers-spicy.jpg","Stickers","Cherries, a kiss and our cat."],
-           ["assets/matchboxes-v2.jpg","The matchbox","Pocket-size, cat and stripes."],["assets/letter-spicy.jpg","The letter","Welcome to the Club, you two."],["assets/solo-spicy.jpg","The Solo box","A black cube, sealed with a little heat."]],
+          ["assets/in-letter-spicy.png","Welcome letter","A6 card: “Welcome to the Club, you two.”"]],
    drawTag:"Comes with every Spicy set",drawTitle:"Date Night Deck",drawLead:"Questions and light dares for two. Tap the card to draw one.",drawFoot:"Phero Club · Date Night",
    prompts:["Slow dance to one song","Tell me when you first noticed me","Whisper one thing you've never told me","Pick a song. Kiss until it ends","Trade seats. Sit closer","Plan our next date, no phones","Tell me the moment you knew","Recreate our first hello"]}
 };
