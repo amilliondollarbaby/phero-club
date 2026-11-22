@@ -749,12 +749,13 @@ function renderMood(){
   $("#people").hidden=!d.look.length;$$('a[href="#people"]').forEach(a=>a.hidden=!d.look.length);
   $("#look").innerHTML=d.look.map(([img,t,c],k)=>`<figure class="lk rv" data-zoom="${img}"><div class="lk-ph"><img src="${src(img)}" alt="${t}" loading="lazy"></div>
     <figcaption><span class="caps">No. ${String(k+1).padStart(2,"0")}</span><b>${t}</b><span>${c}</span></figcaption></figure>`).join("");
-  $$("#look [data-zoom]").forEach(el=>el.onclick=()=>openLB(src(el.dataset.zoom)));if(typeof watch==="function")watch();
+  $$("#look [data-zoom]").forEach(el=>el.onclick=()=>openLB(src(el.dataset.zoom)));
   $("#rtrio").innerHTML=d.trio.map(i=>`<img src="${src(CANDLES[i].img)}" alt="">`).join("");
   $("#inbox").innerHTML=d.inbox.map(([art,t,c],k)=>`<figure class="ib rv" data-zoom="${Array.isArray(art)?"":art}">
       <div class="art">${Array.isArray(art)?`<div class="trio">${art.map(i=>`<img src="${src(CANDLES[i].img)}" alt="">`).join("")}</div>`:`<img src="${src(art)}" alt="${t}" loading="lazy">`}</div>
       <span class="caps n">No. ${String(k+1).padStart(2,"0")}</span><h4>${t}</h4><p>${c}</p></figure>`).join("");
   $$("#inbox .ib").forEach(el=>{if(el.dataset.zoom)el.onclick=()=>openLB(src(el.dataset.zoom));else el.style.cursor="default"});
+  if(typeof watch==="function")watch();
   renderBox(false);
   $("#card").classList.remove("flip");
   $("#mq").innerHTML=(mood==="sweet"
