@@ -19,8 +19,8 @@
   --ease:cubic-bezier(.22,.8,.24,1);--glide:cubic-bezier(.25,.75,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
   --brand:"Playfair Display",Georgia,serif;--script:"Pinyon Script",cursive;--serif:"Cormorant Garamond",Georgia,serif;
 }
-body[data-mood="sweet"]{--bg:#FFF6F0;--bg2:#FDE1E8;--ink:#3A0612;--soft:#7a3a48;--accent:#8E0E1F;--pop:#F25C60;--line:rgba(58,6,18,.14);--card:#fff;--on:#FFF6F0}
-body[data-mood="spicy"]{--bg:#3A0612;--bg2:#5B0A1A;--ink:#FFF6F0;--soft:#F7A1B8;--accent:#F25C60;--pop:#F7A1B8;--line:rgba(255,246,240,.16);--card:#4a0816;--on:#3A0612}
+body[data-mood="sweet"]{--logoP:#8E0E1F;--logoC:#3A0612;--bg:#FFF6F0;--bg2:#FDE1E8;--ink:#3A0612;--soft:#7a3a48;--accent:#8E0E1F;--pop:#F25C60;--line:rgba(58,6,18,.14);--card:#fff;--on:#FFF6F0}
+body[data-mood="spicy"]{--logoP:#F25C60;--logoC:#FFF6F0;--bg:#3A0612;--bg2:#5B0A1A;--ink:#FFF6F0;--soft:#F7A1B8;--accent:#F25C60;--pop:#F7A1B8;--line:rgba(255,246,240,.16);--card:#4a0816;--on:#3A0612}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:auto}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.55;overflow-x:hidden;
@@ -33,6 +33,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .caps{text-transform:uppercase;letter-spacing:.28em;font-weight:600;font-size:.68rem}
 .eyebrow{display:inline-flex;align-items:center;gap:14px;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:.66rem;color:var(--accent)}
 .eyebrow::before{content:"";width:34px;height:1px;background:currentColor}
+.eyebrow b{font-weight:600;font-family:var(--brand);font-style:italic;letter-spacing:.02em;font-size:1.25em;margin-right:2px}
 .h2{font-family:var(--serif);font-weight:500;text-transform:uppercase;font-size:clamp(2.5rem,5.4vw,4.6rem);line-height:.94;letter-spacing:-.005em}
 .h2 .sc{font-family:var(--script);text-transform:none;color:var(--accent);font-size:1.12em;letter-spacing:0}
 .lead{font-size:1.16rem;line-height:1.65;color:var(--soft);max-width:500px}
@@ -56,9 +57,15 @@ nav{position:fixed;inset:0 0 auto 0;z-index:60;display:grid;grid-template-column
     transition:background .4s,color .8s}
 nav.solid{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px)}
 .links{display:flex;gap:24px}.links a{opacity:.75;transition:opacity .2s}.links a:hover{opacity:1}
-.logo{position:relative;display:inline-block;font-family:var(--brand);font-style:italic;font-weight:900;line-height:1;white-space:nowrap}
-.logo .c{font-family:var(--script);font-style:normal;font-weight:400;position:absolute;right:-.22em;bottom:-.38em;transform:rotate(-6deg)}
-nav .logo{font-size:1.7rem;color:var(--hacc,var(--accent))}nav .logo .c{font-size:.78em;color:var(--hink,var(--ink))}
+/* Logo: matches the approved A1+ file (assets/brand/logo-on-red-and-pink.png).
+   "Club" upright, 70% size, overlapping the bottom-right of "Phero". Colors only from the two approved colorways. */
+.logo{position:relative;display:inline-block;font-family:var(--brand);font-style:italic;font-weight:900;line-height:1;letter-spacing:-.03em;white-space:nowrap;color:var(--logoP)}
+.logo .c{position:absolute;left:55%;top:.83em;font-family:var(--script);font-style:normal;font-weight:400;font-size:.7em;letter-spacing:0;line-height:1;color:var(--logoC);pointer-events:none}
+nav .logo{font-size:2.05rem;margin-bottom:.35em}
+.lockup{display:inline-flex;flex-direction:column;align-items:center;text-align:center}
+.lockup .est{display:flex;align-items:center;gap:14px;font-weight:600;font-size:clamp(.62rem,1vw,.8rem);letter-spacing:.32em;color:var(--logoP);margin-bottom:.4em}
+.lockup .est::before,.lockup .est::after{content:"";width:clamp(34px,5vw,64px);height:1px;background:currentColor}
+.lockup .ltag{font-weight:500;font-size:clamp(.72rem,1.3vw,1.05rem);letter-spacing:.34em;color:var(--logoC);margin-top:clamp(40px,5.4vw,72px)}
 .toggle{justify-self:end;display:flex;border-radius:999px;padding:4px;background:color-mix(in srgb,var(--hink,var(--ink)) 10%,transparent)}
 .toggle button{padding:8px 15px;border-radius:999px;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hink,var(--ink));transition:all .4s var(--ease)}
 .toggle button[aria-pressed="true"]{background:var(--hacc,var(--accent));color:var(--hbgs,var(--bg))}
@@ -160,6 +167,11 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 .mood .caps{position:relative;opacity:.8}
 @media (max-width:820px){.moods{flex-direction:column;height:auto}.mood{min-height:520px}}
 
+/* ---------- QUOTE ---------- */
+.quote{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(110px,13vw,190px) 0}
+.q{font-family:var(--brand);font-style:italic;font-weight:900;font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.1;letter-spacing:-.01em;color:var(--accent);max-width:17ch;margin:0 auto 38px}
+.quote .eyebrow{justify-content:center}.quote .eyebrow::after{content:"";width:34px;height:1px;background:currentColor}
+
 /* ---------- RITUAL pinned ---------- */
 .ritual{height:320vh;padding:0}
 .ritual .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;width:min(1200px,100% - 48px);margin-inline:auto}
@@ -216,7 +228,7 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 .card.flip{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;display:grid;place-items:center;padding:30px;text-align:center;box-shadow:0 26px 50px rgba(58,6,18,.28)}
 .face.back{background:var(--cardback)}
-.face.back span{font-family:var(--script);font-size:3.4rem;color:var(--cardink)}
+.face.back .plate{background:var(--cardface);padding:22px 30px 34px;box-shadow:0 0 0 1px color-mix(in srgb,var(--cardink) 30%,transparent)}.face.back .logo{font-size:2.6rem}
 .face.front{background:var(--cardface);color:var(--cardink);transform:rotateY(180deg)}
 .face.front p{font-family:var(--brand);font-style:italic;font-weight:900;font-size:1.55rem;line-height:1.25}
 .face.front small{position:absolute;bottom:20px;left:0;right:0}
@@ -244,18 +256,17 @@ body[data-mood="spicy"]{--cardback:repeating-linear-gradient(90deg,#8E0E1F 0 22p
 
 /* ---------- CLUB ---------- */
 .club{text-align:center}
-.club .logo{font-size:clamp(4.4rem,13vw,9rem);color:var(--accent)}
-.club .logo .c{color:var(--ink)}
+.club .logo{font-size:clamp(4.2rem,13vw,9.5rem)}
 .club{border-top:1px solid var(--line)}
 .club p{margin:56px auto 0}
 .perks{display:flex;justify-content:center;flex-wrap:wrap;margin-top:30px;color:var(--soft)}
 .perks span{padding:0 22px}.perks span+span{border-left:1px solid var(--line)}
 footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 .foot{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px}
-.foot .logo{font-size:1.6rem;color:var(--accent)}.foot .logo .c{font-size:.78em;color:var(--ink)}
+.foot .logo{font-size:1.7rem;margin-bottom:.3em}
 .foot-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}.foot-links a{transition:color .3s}.foot-links a:hover{color:var(--accent)}
 .fine{margin-top:34px;font-size:.88rem;opacity:.75;text-align:center}
-@media (max-width:820px){.foot{grid-template-columns:1fr;justify-items:center;text-align:center}.perks span{padding:6px 14px}}
+@media (max-width:820px){.foot{grid-template-columns:1fr;justify-items:center;text-align:center}.perks{flex-direction:column;gap:10px}.perks span{padding:0}.perks span+span{border-left:0}}
 
 .lb{position:fixed;inset:0;background:rgba(58,6,18,.9);display:none;place-items:center;z-index:100;padding:30px;cursor:zoom-out}
 .lb.open{display:grid}.lb img{max-height:90vh;border-radius:2px}
@@ -311,7 +322,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <section id="story">
   <div class="wrap story">
     <div>
-      <span class="eyebrow">The idea</span>
+      <span class="eyebrow"><b>01</b>The idea</span>
       <h2 class="h2 rv" style="margin-top:12px"><span class="ln"><span>Scents that</span></span><span class="ln"><span><span class="sc">attract</span></span></span></h2>
       <p class="big rv"><b>Phero</b> comes from pheromones, the invisible pull that draws people together. We can't bottle that. But we can make the scents that set the mood for it.</p>
     </div>
@@ -332,7 +343,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <!-- MOODS -->
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="h2 rv" style="margin-bottom:34px"><span class="ln"><span>One brand,</span></span><span class="ln"><span>two <span class="sc">moods</span></span></span></h2>
+    <span class="eyebrow"><b>02</b>The collection</span>
+    <h2 class="h2 rv" style="margin:14px 0 40px"><span class="ln"><span>One brand,</span></span><span class="ln"><span>two <span class="sc">moods</span></span></span></h2>
     <div class="moods">
       <div class="mood sweet rv" data-go="sweet">
         <div class="fan"><img src="assets/c-strawberry-shortcake.png" alt=""><img src="assets/c-cotton-candy-cloud.png" alt=""><img src="assets/c-honey-butter-toast.png" alt=""></div>
@@ -343,6 +355,14 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
         <span class="caps">For couples</span><h3>Spicy</h3><p>Dark, rich and a little dangerous. A late-night dessert menu, made for two.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="wrap">
+    <p class="q rv" data-t="quote"></p>
+    <span class="eyebrow rv" data-t="quoteBy"></span>
   </div>
 </section>
 
@@ -366,7 +386,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <!-- BOXES -->
 <section class="boxes-sec" id="boxes">
   <div class="wrap">
-    <h2 class="h2 rv"><span class="ln"><span>Pick your</span></span><span class="ln"><span><span class="sc">box</span></span></span></h2>
+    <span class="eyebrow"><b>03</b>The boxes</span>
+    <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>Pick your</span></span><span class="ln"><span><span class="sc">box</span></span></span></h2>
     <div class="box-ui">
       <div class="box-photo rv" id="boxPhoto"><img id="boxA" alt="Box"><img id="boxB" class="hide" alt=""></div>
       <div class="rv">
@@ -383,7 +404,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <!-- EXTRAS -->
 <section id="extras" style="padding-bottom:40px">
   <div class="wrap extras-head">
-    <h2 class="h2 rv"><span class="ln"><span>Little</span></span><span class="ln"><span><span class="sc">extras</span></span></span></h2>
+    <div><span class="eyebrow"><b>04</b>In every set</span>
+    <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>Little</span></span><span class="ln"><span><span class="sc">extras</span></span></span></h2></div>
     <span class="caps drag-hint">← Drag to explore →</span>
   </div>
   <div class="rail" id="rail"></div>
@@ -393,13 +415,13 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <section class="draw-sec">
   <div class="wrap draw">
     <div class="rv">
-      <span class="caps" style="color:var(--accent)" data-t="drawTag"></span>
+      <span class="eyebrow"><b>05</b><span data-t="drawTag"></span></span>
       <h2 class="h2" style="margin-top:12px" data-t="drawTitle"></h2>
       <p class="lead" style="margin:16px 0 26px" data-t="drawLead"></p>
       <button class="btn" id="drawBtn">Draw a card</button>
     </div>
     <div class="deck rv" id="deck"><div class="under"></div>
-      <div class="card" id="card"><div class="face back"><span>PC</span></div><div class="face front"><p id="prompt"></p><small class="caps" data-t="drawFoot"></small></div></div>
+      <div class="card" id="card"><div class="face back"><span class="plate"><span class="logo">Phero<span class="c">Club</span></span></span></div><div class="face front"><p id="prompt"></p><small class="caps" data-t="drawFoot"></small></div></div>
     </div>
   </div>
 </section>
@@ -408,7 +430,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <section id="people">
   <div class="wrap">
     <div class="look-head">
-      <h2 class="h2 rv"><span class="ln"><span>Members of</span></span><span class="ln"><span>the <span class="sc">club</span></span></span></h2>
+      <div><span class="eyebrow"><b>06</b>Lookbook</span>
+      <h2 class="h2 rv" style="margin-top:14px"><span class="ln"><span>Members of</span></span><span class="ln"><span>the <span class="sc">club</span></span></span></h2></div>
       <p class="lead rv" data-t="lookLead"></p>
     </div>
     <div class="look" id="look"></div>
@@ -418,8 +441,9 @@ footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--soft)}
 <!-- CLUB -->
 <section class="club" id="club">
   <div class="wrap">
-    <span class="caps" style="color:var(--accent)">Est. 2026</span>
-    <div style="margin-top:20px"><span class="logo">Phero<span class="c">Club</span></span></div>
+    <div class="lockup rv" role="img" aria-label="Phero Club, established 2026, scents that attract">
+      <span class="est">EST. 2026</span><span class="logo">Phero<span class="c">Club</span></span><span class="ltag">SCENTS THAT ATTRACT</span>
+    </div>
     <p class="lead">Every box makes you a member. Members get first dibs on new scents, surprise drops and little extras along the way.</p>
     <div class="perks caps"><span>First dibs</span><span>Members-only drops</span><span>Little surprises</span></div>
     <a class="btn" href="#boxes" style="margin-top:44px">Find your box <svg><use href="#arrowR"/></svg></a>
@@ -455,6 +479,7 @@ const MOOD={
  sweet:{tag:"Sweet · for singles",trio:[0,1,2],extra:"assets/stickers-sweet-v2.jpg",
    camp:"assets/sweet-duo-jump.jpg",campTag:"The Sweet collection · for singles",campTitle:"Sweet for you.",campScript:"fall for yourself",
    campLead:"Strawberry, spun sugar and warm honey toast. Three dessert candles for slow mornings, long baths and the book you keep meaning to finish.",campCta:"The Sweet Night In",
+   quote:"Light it, pour the tea, and fall for yourself.",quoteBy:"The Sweet Night In",
    lookLead:"Pink, playful and a little bit extra. Sweet is for the main character: you.",
    look:[["assets/sweet-duo-shortcake.jpg","Best friends, one candle","Strawberry Shortcake"],["assets/sweet-solo-jump.jpg","Light it, then dance","Honey Butter Toast · Cotton Candy Cloud"],
          ["assets/sweet-twirl.jpg","Strawberries, obviously","Strawberry Shortcake"],["assets/sweet-pair-candles.jpg","Pick two","Cotton Candy Cloud · Honey Butter Toast"],
@@ -471,6 +496,7 @@ const MOOD={
  spicy:{tag:"Spicy · for couples",trio:[3,4,5],extra:"assets/deck.jpg",
    camp:"assets/spicy-couple-hero.jpg",campTag:"The Spicy collection · for couples",campTitle:"Spicy for two.",campScript:"lights low",
    campLead:"Dark roast, black cherry and a cinnamon kiss. A late-night dessert menu with a Date Night Deck to see where the evening goes.",campCta:"The Spicy Night For Two",
+   quote:"Lights low, phones away. Let the room do the talking.",quoteBy:"The Spicy Night For Two",
    lookLead:"Phones away, one candle lit. Spicy is for the two of you.",
    look:[["assets/spicy-lights-low.jpg","Lights low","Dark Chocolate Cherry"],["assets/spicy-her.jpg","Her pick","Dark Chocolate Cherry"],
          ["assets/spicy-closer.jpg","Closer","Cinnamon Kiss"],["assets/spicy-him.jpg","His pick","Midnight Espresso"],
