@@ -173,7 +173,7 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 .visual{position:relative;height:min(70vh,620px)}
 .visual .v{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.92) rotate(-2deg);transition:opacity .7s var(--ease),transform 1s var(--glide)}
 .visual .v.on{opacity:1;transform:none}
-.visual .v img.photo{max-height:100%;border-radius:2px;box-shadow:0 30px 60px rgba(58,6,18,.18)}
+.visual .v img.photo{height:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%;border-radius:2px;box-shadow:0 30px 60px rgba(58,6,18,.18)}
 .visual .trio{position:relative;width:100%;height:100%}
 .visual .trio img{position:absolute;bottom:12%;width:36%;filter:drop-shadow(0 26px 30px rgba(58,6,18,.3))}
 .visual .trio img:nth-child(1){left:2%;transform:rotate(-8deg)}.visual .trio img:nth-child(2){left:32%;bottom:18%;z-index:2}.visual .trio img:nth-child(3){right:2%;transform:rotate(8deg)}
@@ -198,7 +198,7 @@ section{position:relative;padding:clamp(100px,12vw,170px) 0}
 /* ---------- EXTRAS carousel ---------- */
 .extras-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
 .drag-hint{color:var(--soft)}
-.rail{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:46px max(24px,calc((100vw - 1200px)/2)) 40px;cursor:grab;scrollbar-width:none}
+.rail{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:46px max(24px,calc((100vw - 1240px)/2)) 40px;scroll-padding-inline:max(24px,calc((100vw - 1240px)/2));cursor:grab;scrollbar-width:none}
 .rail::-webkit-scrollbar{display:none}
 .rail.drag{cursor:grabbing;scroll-snap-type:none}
 .ex{flex:0 0 min(340px,78vw);scroll-snap-align:start;transition:transform .5s var(--ease)}
